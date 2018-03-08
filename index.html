@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Challenge</title>
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|VT323" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron container">
+
+        <h1 class="display-4">Trivia Challenge</h1>
+        <h2>Can you beat the timer ?</h2>
+        <div class="row">
+            <div class="col-8">
+                <div id="question" class="container subcontainer">
+                    This is where the question goes. Once you come up with a theme, the rest should be easy.
+                </div>
+            </div>
+            <div class="col-4">
+                <div id="timerdisplay" class="container subcontainer">
+                    00:00
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="btn-group-vertical subcontainer" data-toggle="buttons">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option1" autocomplete="off"> answer number one
+                    </label>
+
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> answer number two
+                    </label>
+
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> answer number three
+                    </label>
+
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option4" autocomplete="off"> answer number four
+                    </label>
+                </div>
+            </div>
+            <div id="gifholder" class="col-5">
+                <!--animated gifs will go here-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <!-- <hr class="my-4"> -->
+                <p class="lead">
+                    <a id="committoguess" class="btn btn-primary btn-lg" href="#" role="button">Guess</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>
