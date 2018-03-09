@@ -18,7 +18,7 @@
     <div class="jumbotron container">
 
         <h1 class="display-4">Trivia Challenge</h1>
-        <h2>Can you beat the timer ?</h2>
+        <h2 id="message">Can you beat the timer ?</h2>
         <div class="row">
             <div class="col-8">
                 <div id="question" class="container subcontainer">
@@ -31,28 +31,31 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
+
             <div class="col-6">
                 <div class="btn-group-vertical subcontainer" data-toggle="buttons">
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> answer number one
+                    <label id="label1" class="btn btn-primary choice" value="0" >
+                        <input type="radio" name="options" id="option1" value="0" autocomplete="off"> answer number one
                     </label>
 
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> answer number two
+                    <label id="label2" class="btn btn-primary choice"value="1">
+                        <input type="radio" name="options" id="option2" value="1"  autocomplete="off"> answer number two
                     </label>
 
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> answer number three
+                    <label id="label3" class="btn btn-primary choice" value="2">
+                        <input type="radio" name="options" id="option3" value="2"  autocomplete="off"> answer number three
                     </label>
 
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option4" autocomplete="off"> answer number four
+                    <label id="label4" class="btn btn-primary choice" value="3">
+                        <input type="radio" name="options" id="option4" value="3"  autocomplete="off"> answer number four
                     </label>
                 </div>
             </div>
+
             <div id="gifholder" class="col-5">
-                <!--animated gifs will go here-->
+                <!--animated gifs go here-->
             </div>
         </div>
 
@@ -60,14 +63,14 @@
             <div class="col">
                 <!-- <hr class="my-4"> -->
                 <p class="lead">
-                    <a id="committoguess" class="btn btn-primary btn-lg" href="#" role="button">Guess</a>
+                    <a id="commit" class="btn btn-primary btn-lg" href="#" role="button">Commit</a>
                 </p>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="assets/javascript/game.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,13 @@
 body {
-    background: rgb(224, 231, 33); /*pantone 388 */
+    background: rgb(224, 231, 33);
+    /*pantone 388 */
 }
 
 h1 {
     color: white;
-    text-shadow: 1px 1px rgba(0, 0, 0, .9); 
+    text-shadow: 1px 1px rgba(0, 0, 0, .9);
 }
+
 h2 {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -15,12 +17,12 @@ h2 {
 
 #timer {
     font-family: 'Share Tech Mono', monospace;
-    
 }
 
 .jumbotron {
     position: absolute;
-    background: rgb(0, 133, 202); /* pantone process magenta */
+    background: rgb(0, 133, 202);
+    /* pantone process magenta */
     left: 30px;
     top: 30px;
     width: 90%;
@@ -47,21 +49,20 @@ h2 {
 }
 
 .checked {
-    background: rgb(67, 176, 42); 
+    background: rgb(67, 176, 42);
 }
 
-#committoguess {
-    background: rgb(67, 176, 42); 
+#commit {
+    background: rgb(67, 176, 42);
     margin-left: 20px;
 }
 
 .btn-primary {
-   text-align: left;
-   /* background: rgb(0, 152, 116); */
+    text-align: left;
+    /* background: rgb(0, 152, 116); */
 }
 
-
-#timerdisplay { 
+#timerdisplay {
     text-align: center;
     font-family: VT323, monospace;
     font-size: 36px;
