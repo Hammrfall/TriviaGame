@@ -4,11 +4,16 @@ var gamestate = 0;
    1 -guessing
    2-results */
 var guessedIndex = -1;
+var guessMade = false;
 var currentTrivia;
 var currentTriviaIndex = -1;
 var wins = 0;
 var losses = 0;
+var unAnswered = 0;
 var triviaArray = []
+var gameTimeMax = 30;
+var gameTime = gameTimeMax;
+var GameCountDown;
 
 // triviaObject
 var trivia = function () {
@@ -26,10 +31,23 @@ var trivia = function () {
 
 } //end of trivia object
 
+var gameTimer = setInterval(function () {
+    GameCountDown--;
+    if (GameCountDown >= 0 && guessMade === false) {
+        var secondsString;
+        if (GameCountDown >=10) {secondsString = GameCountDown; }
+        else if (GameCountDown == 0) {secondsString = "00";}
+        else {secondsString = "0" + GameCountDown}
+        $("#timerdisplay").text("00:" + secondsString);
+    }
+    if (GameCountDown == 0) {
+        checkAnswer();
+    }
+}, 1000);
+
 $(document).ready(function () {
     populateTriviaArray();
-    getNextTrivia();
-    populatePage();
+    resetGame();
 });
 
 function resetGame() {
@@ -37,7 +55,7 @@ function resetGame() {
     currentTriviaIndex = -1;
     wins = 0;
     losses = 0;
-    S = 0;
+    unAnswered = 0;
     getNextTrivia();
     populatePage();
 }
@@ -93,9 +111,12 @@ function getNextTrivia() {
     if (currentTriviaIndex < triviaArray.length) {
         currentTrivia = triviaArray[currentTriviaIndex];
         guessedIndex = -1;
-        S = 1;
+        GameCountDown = gameTimeMax;
+        $("#timerdisplay").text("00:" + GameCountDown);
+        guessMade = false;
+        gameTimer.start; // ??
     }
-
+    //ToDo:  create an else that calls an end of game function, and that function sets a timer to restart the game
     console.log(currentTrivia);
 }
 
@@ -111,6 +132,7 @@ function populatePage() {
 
 $(".choice").click("click", function () {
     if (guessedIndex < 0) {
+        guessMade = true;
         guessedIndex = $(this).attr('value');
         console.log(guessedIndex);
         $(this).css("background", "rgb(67, 176, 42");
@@ -122,7 +144,10 @@ function checkAnswer() {
     gamestate = 2;
     if (guessedIndex == -1) {
         $("#message").text("You ran out of time");
-        losses++;
+        unAnswered++;
+        var rightID = "#label" + (currentTrivia.correctIndex + 1);
+        $(rightID).css("background", "rgb(67, 176, 42");
+
     } else if (guessedIndex == currentTrivia.correctIndex) {
         $("#message").text("That is correct!");
         wins++;
@@ -135,6 +160,11 @@ function checkAnswer() {
         $(wrongID).css("background", "rgb(246, 80, 88");
         $(rightID).css("background", "rgb(67, 176, 42");
         losses++;
+        //ToDo: code to display gif
     }
-    // if you still have trivia, start timer to go to next question 
+
+    var newGameTimer = setTimeout(function () {
+        getNextTrivia();
+        populatePage();
+    }, 3000);
 }
