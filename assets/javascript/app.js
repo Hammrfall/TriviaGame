@@ -15,8 +15,7 @@ var gameTimeMax = 30;
 var gameTime = gameTimeMax;
 var GameCountDown;
 
-// triviaObject
-var trivia = function () {
+var trivia = function () { // triviaObject
     this.correctIndex;
     this.question = ""
     this.choices = []
@@ -35,13 +34,17 @@ var gameTimer = setInterval(function () {
     GameCountDown--;
     if (GameCountDown >= 0 && guessMade === false) {
         var secondsString;
-        if (GameCountDown >=10) {secondsString = GameCountDown; }
-        else if (GameCountDown == 0) {secondsString = "00";}
-        else {secondsString = "0" + GameCountDown}
+        if (GameCountDown >= 10) {
+            secondsString = GameCountDown;
+        } else if (GameCountDown == 0) {
+            secondsString = "00";
+        } else {
+            secondsString = "0" + GameCountDown;
+        }
         $("#timerdisplay").text("00:" + secondsString);
-    }
-    if (GameCountDown == 0) {
-        checkAnswer();
+        if (GameCountDown == 0) {
+            checkAnswer();
+        }
     }
 }, 1000);
 
@@ -101,9 +104,6 @@ function populateTriviaArray() {
     thirdQuestion.choices.push(guess4);
     thirdQuestion.correctIndex = 3;
     triviaArray.push(thirdQuestion);
-
-    console.log(triviaArray);
-
 };
 
 function getNextTrivia() {
@@ -114,10 +114,10 @@ function getNextTrivia() {
         GameCountDown = gameTimeMax;
         $("#timerdisplay").text("00:" + GameCountDown);
         guessMade = false;
-        gameTimer.start; // ??
+        gameTimer.start; 
     }
     //ToDo:  create an else that calls an end of game function, and that function sets a timer to restart the game
-    console.log(currentTrivia);
+
 }
 
 function populatePage() {
@@ -134,7 +134,6 @@ $(".choice").click("click", function () {
     if (guessedIndex < 0) {
         guessMade = true;
         guessedIndex = $(this).attr('value');
-        console.log(guessedIndex);
         $(this).css("background", "rgb(67, 176, 42");
         checkAnswer();
     }
@@ -160,9 +159,8 @@ function checkAnswer() {
         $(wrongID).css("background", "rgb(246, 80, 88");
         $(rightID).css("background", "rgb(67, 176, 42");
         losses++;
-        //ToDo: code to display gif
     }
-
+    //ToDo: code to display gif
     var newGameTimer = setTimeout(function () {
         getNextTrivia();
         populatePage();
