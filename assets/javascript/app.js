@@ -128,6 +128,8 @@ function populatePage() {
         $(idString).html(currentTrivia.choices[i]);
     }
     $(".choice").css("background", "rgb(0, 133, 202)");
+    $("#message").text("Can you beat the timer ?");
+
 }
 
 $(".choice").click("click", function () {
