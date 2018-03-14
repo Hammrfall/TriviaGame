@@ -1,9 +1,13 @@
 //Global variables
+/* The global variable TriviaArray,
+is declared in the data.js file.
+It is an array of trivia objects, 
+defined and populated in the data.js file */
 var gameState = 0;
 /* 0 - reset
    1 -guessing
-   2-results */
-
+   2-results 
+   3 - game end */
 var guessedIndex = -1;
 var guessMade = false;
 var currentTrivia;
@@ -19,21 +23,17 @@ var gameTimer = setInterval(function () {
     GameCountDown--;
     if (GameCountDown >= 0 && guessMade === false) {
         var secondsString;
-        if (GameCountDown >= 10) {
-            secondsString = GameCountDown;
-        } else {
-            secondsString = "0" + GameCountDown;
-        }
+        if (GameCountDown >= 10) {secondsString = GameCountDown;} 
+        else {secondsString = "0" + GameCountDown;}
         $("#timerdisplay").text("00:" + secondsString);
-        if (GameCountDown == 0) {
-            checkAnswer()
-        }
+        if (GameCountDown == 0) {checkAnswer()};
     }
 }, 1000);
 
 $(document).ready(function () {
-    populateTriviaArray();
+    populateTriviaArray(); //calls function in the data.js file
     resetGame();
+    gameTimer.start;
 });
 
 function resetGame() {
@@ -42,8 +42,8 @@ function resetGame() {
     wins = 0;
     losses = 0;
     unAnswered = 0;
+    GameCountDown = gameTimeMax
     getNextTrivia();
-    populatePage();
 }
 
 function getNextTrivia() {
@@ -55,16 +55,14 @@ function getNextTrivia() {
         $("#timerdisplay").text("00:" + GameCountDown);
         guessMade = false;
         gameState = 1
-        gameTimer.start;
         populatePage();
-    }
-    //ToDo:  create an else that calls an end of game function, and that function sets a timer to restart the game
-    else {
+    } else {
         gameEnd()
     }
 }
 
 function populatePage() {
+    $("#timerdisplay").text("00:" + gameTimeMax)
     $("#question").text(currentTrivia.question);
     var idString;
     for (var i = 0; i < 4; i++) {
@@ -73,7 +71,6 @@ function populatePage() {
     }
     $(".choice").css("background", "rgb(0, 133, 202)");
     $("#message").text("Can you beat the timer ?");
-
 }
 
 $(".choice").click("click", function () {
@@ -107,11 +104,10 @@ function checkAnswer() {
         losses++;
     }
     $("#gifholder").html('<img src="assets/images/' + currentTrivia.gifRef + '" alt="animatedGif" >');
-    
-    var newGameTimer = setTimeout(function (){        
+    var newGameTimer = setTimeout(function () {
         $("#gifholder").html("")
         getNextTrivia();
-    }, 3000);
+    }, 7000);
 }
 
 function gameEnd() {
@@ -120,5 +116,5 @@ function gameEnd() {
     var GameTimer = setTimeout(function () {
         currentTriviaIndex = -1
         resetGame()
-    }, 7000);
+    }, 10000);
 }
