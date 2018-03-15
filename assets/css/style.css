@@ -12,7 +12,7 @@ h2 {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    letter-spacing: .15em;
+    letter-spacing: .1em;
 }
 
 .jumbotron {
@@ -50,8 +50,6 @@ h2 {
 #timer {
     font-family: 'Share Tech Mono', monospace;
 }
-
-
 
 #commit {
     background: rgb(67, 176, 42);

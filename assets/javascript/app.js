@@ -23,10 +23,15 @@ var gameTimer = setInterval(function () {
     GameCountDown--;
     if (GameCountDown >= 0 && guessMade === false) {
         var secondsString;
-        if (GameCountDown >= 10) {secondsString = GameCountDown;} 
-        else {secondsString = "0" + GameCountDown;}
+        if (GameCountDown >= 10) {
+            secondsString = GameCountDown;
+        } else {
+            secondsString = "0" + GameCountDown;
+        }
         $("#timerdisplay").text("00:" + secondsString);
-        if (GameCountDown == 0) {checkAnswer()};
+        if (GameCountDown == 0) {
+            checkAnswer()
+        };
     }
 }, 1000);
 
