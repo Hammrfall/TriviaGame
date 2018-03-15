@@ -1,10 +1,10 @@
-var triviaArray = []
+var triviaArray = [];
 
 var trivia = function () { // triviaObject
     this.correctIndex;
-    this.question = ""
-    this.choices = []
-    this.gifRef = ""
+    this.question = "";
+    this.choices = [];
+    this.gifRef = "";
     isCorrect = function (guess) {
         var answer = false;
         if (guess === this.correctIndex) {
