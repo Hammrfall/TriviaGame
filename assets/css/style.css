@@ -1,6 +1,5 @@
 body {
     background: rgb(224, 231, 33);
-    /*pantone 388 */
 }
 
 h1 {
@@ -62,10 +61,6 @@ h2 {
 
 #timerdisplay {
     text-align: center;
-    font-family: VT323, monospace;
+    font-family: 'VT323', monospace;
     font-size: 36px;
-}
-
-#gifholder {
-    align-content: left;
 }
